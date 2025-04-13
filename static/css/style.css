@@ -1,0 +1,296 @@
+/* Stili Generali */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.6;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    color: #1d3557;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* --- Stili Selezione Vetrine --- */
+.selection-container {
+    background-color: #fff;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 600px; /* Leggermente più largo per la griglia */
+    width: 90%;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.selection-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #1d3557;
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+/* MODIFICA: Stile per la griglia delle vetrine */
+.vetrina-grid-container {
+    margin-bottom: 25px;
+    display: grid;
+    /* Crea colonne che si adattano, larghezza minima 120px, massima 1fr */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px; /* Spazio tra le card vetrina */
+    padding: 10px; /* Padding interno */
+    max-height: 300px; /* Altezza massima con scroll */
+    overflow-y: auto; /* Scroll se necessario */
+    border: 1px solid #dfe3e8;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+}
+
+/* MODIFICA: Stile per la singola card vetrina cliccabile */
+.vetrina-item {
+    background-color: #fff;
+    border: 2px solid #ced4da; /* Bordo iniziale */
+    border-radius: 6px;
+    padding: 15px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #495057;
+    white-space: nowrap;       /* Impedisce al testo di andare a capo */
+    overflow: hidden;          /* Nasconde il testo che esce dai bordi */
+    text-overflow: ellipsis;
+
+}
+
+.vetrina-item:hover {
+    border-color: #adb5bd;
+    background-color: #f1f3f5;
+}
+
+/* MODIFICA: Stile per la card vetrina quando è selezionata */
+.vetrina-item.selected {
+    background-color: #e0f2fe; /* Azzurrino chiaro */
+    border-color: #007bff;    /* Blu bordo */
+    color: #0056b3;        /* Blu testo scuro */
+    font-weight: 600;
+}
+.vetrina-item.selected:hover {
+     background-color: #cce7ff; /* Azzurrino leggermente più scuro al hover */
+}
+
+/* Nascondiamo la checkbox se presente (potremmo anche non crearla nel JS) */
+.vetrina-item input[type="checkbox"] {
+     display: none;
+}
+
+
+#start-exercise-button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #2a9d8f;
+    color: white;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10px; /* Aggiunto margine sopra */
+}
+
+#start-exercise-button:hover:not(:disabled) {
+    background-color: #268a7e;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#start-exercise-button:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+     box-shadow: none;
+}
+
+#selection-feedback {
+    margin-top: 15px;
+    font-weight: 500;
+    /* Classe .feedback-warning aggiunta da JS */
+}
+
+
+/* --- Stili Flashcard --- */
+#flashcard {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 550px;
+    width: 90%;
+    min-height: 450px;
+    display: flex; /* display: none; gestito da JS */
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#loading {
+    font-style: italic;
+    color: #6c757d;
+    padding: 20px 0;
+    display: none;
+}
+
+#bird-image-container {
+    margin-bottom: 25px;
+    min-height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dfe3e8;
+    overflow: hidden;
+}
+
+#bird-image {
+    max-width: 100%;
+    max-height: 300px;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    /* display: none; gestito da JS */
+}
+
+.options-container {
+    margin-top: 20px;
+    margin-bottom: 25px; /* Aumentato spazio sotto le opzioni */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.choice-button {
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #fff;
+    color: #495057;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.choice-button:hover:not(:disabled) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+.choice-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.choice-button.correct:disabled {
+    background-color: #c3e6cb;
+    border-color: #8fd19e;
+    color: #155724;
+    opacity: 1;
+    font-weight: 500;
+}
+
+.choice-button.incorrect:disabled {
+    background-color: #f5c6cb;
+    border-color: #f1aeb5;
+    color: #721c24;
+    opacity: 1;
+    font-weight: 500;
+}
+
+/* MODIFICA: Bottone Prossima spostato */
+#next-card {
+    padding: 10px 20px; /* Leggermente meno padding verticale */
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    background-color: #007bff;
+    color: white;
+    /* margin-top: auto; -- Rimosso, non è più l'ultimo elemento */
+    margin-bottom: 20px; /* Aggiunto spazio sotto */
+    width: 100%; /* Manteniamo larghezza piena? O auto? Proviamo piena. */
+    box-sizing: border-box;
+    order: 5; /* Assicura che venga dopo le opzioni nel flusso flex (anche se spostato in HTML) */
+    /* display: none; gestito da JS */
+}
+
+#next-card:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+#next-card:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
+
+
+.feedback-container {
+    min-height: 2.5em; /* Ridotto leggermente, non serve più spazio per "Corretto/Sbagliato" */
+    margin-top: 15px;
+    padding: 5px 0;
+    order: 10; /* Assicura che sia dopo il bottone Prossima */
+}
+
+#feedback {
+    font-weight: bold;
+    min-height: 1em; /* Ridotto, non deve contenere testo visibile */
+    font-size: 1.1rem;
+    /* Le classi colore .feedback-correct/incorrect possono ancora essere usate per stile sottile */
+    /* Esempio: aggiungere un bordo colorato al contenitore? */
+}
+/* Esempio di stile feedback sottile (opzionale):
+.feedback-container { border-left: 5px solid transparent; transition: border-color 0.3s ease; }
+.feedback-container.feedback-correct { border-left-color: #2a9d8f; }
+.feedback-container.feedback-incorrect { border-left-color: #e76f51; }
+*/
+
+#correct-answer {
+    margin-top: 5px; /* Spazio ridotto */
+    color: #6c757d;
+    font-style: italic;
+    font-size: 0.95rem;
+    display: none;
+}
+
+
+/* Media Query */
+@media (max-width: 600px) {
+    body { padding: 10px; }
+    .selection-container, #flashcard { padding: 20px; width: 95%; }
+    h1 { font-size: 1.5rem; margin-bottom: 20px; }
+    .selection-container h2 { font-size: 1.2rem; }
+    .vetrina-grid-container { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; padding: 8px; }
+    .vetrina-item { padding: 12px 8px; font-size: 0.9rem;}
+    #start-exercise-button { font-size: 1rem; padding: 10px 20px; }
+    #bird-image-container, #bird-image { min-height: 220px; max-height: 220px; }
+    .options-container { gap: 10px; margin-bottom: 20px; }
+    .choice-button, #next-card { padding: 10px 15px; font-size: 0.9rem; }
+    .feedback-container { min-height: 2em; }
+    #correct-answer { font-size: 0.85rem; }
+}

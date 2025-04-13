@@ -1,0 +1,1005 @@
+{
+  "vetrine": [
+    "VETRINA 1a",
+    "VETRINA 1b",
+    "VETRINA 2a",
+    "VETRINA 2b",
+    "VETRINA 3a",
+    "VETRINA 3b",
+    "VETRINA 4a",
+    "VETRINA 4b",
+    "VETRINA 5a",
+    "VETRINA 5b",
+    "VETRINA 6a",
+    "VETRINA 6b",
+    "VETRINA 7a",
+    "VETRINA 7b"
+  ],
+  "birds": [
+    {
+      "name": "COTURNICE DELLE ALPI",
+      "image_path": "img/VETRINA 1a/COTURNICE DELLE ALPI.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "FAGIANO DI MONTE",
+      "image_path": "img/VETRINA 1a/FAGIANO DI MONTE F.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "FAGIANO DI MONTE",
+      "image_path": "img/VETRINA 1a/FAGIANO DI MONTE M.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "FRANCOLINO DI MONTE",
+      "image_path": "img/VETRINA 1a/FRANCOLINO DI MONTE M.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "FRANCOLINO DI MONTE",
+      "image_path": "img/VETRINA 1a/FRANCOLINO DI MONTE.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "GALLO CEDRONE F",
+      "image_path": "img/VETRINA 1a/GALLO CEDRONE F_1.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "GALLO CEDRONE F",
+      "image_path": "img/VETRINA 1a/GALLO CEDRONE F_2.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "PERNICE BIANCA",
+      "image_path": "img/VETRINA 1a/PERNICE BIANCA_1.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "PERNICE BIANCA",
+      "image_path": "img/VETRINA 1a/PERNICE BIANCA_2.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "PERNICE ROSSA",
+      "image_path": "img/VETRINA 1a/PERNICE ROSSA.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "STARNA",
+      "image_path": "img/VETRINA 1a/STARNA.png",
+      "vetrina": "VETRINA 1a"
+    },
+    {
+      "name": "BECCACCIA",
+      "image_path": "img/VETRINA 1b/BECCACCIA.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "BECCACCINO",
+      "image_path": "img/VETRINA 1b/BECCACCINO.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "CESENA",
+      "image_path": "img/VETRINA 1b/CESENA.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "CROCCOLONE",
+      "image_path": "img/VETRINA 1b/CROCCOLONE.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "FAGIANO COMUNE",
+      "image_path": "img/VETRINA 1b/FAGIANO COMUNE (me f).png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "FOLAGA",
+      "image_path": "img/VETRINA 1b/FOLAGA.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "FRULLINO",
+      "image_path": "img/VETRINA 1b/FRULLINO.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "GALLINELLA D'ACQUA",
+      "image_path": "img/VETRINA 1b/GALLINELLA D'ACQUA.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "MERLO DAL COLLARE",
+      "image_path": "img/VETRINA 1b/MERLO DAL COLLARE.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "MERLO",
+      "image_path": "img/VETRINA 1b/MERLO_1.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "MERLO",
+      "image_path": "img/VETRINA 1b/MERLO_2.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "PORCIGLIONE",
+      "image_path": "img/VETRINA 1b/PORCIGLIONE.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "PROCIGLIONE",
+      "image_path": "img/VETRINA 1b/PROCIGLIONE.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "QUAGLIA",
+      "image_path": "img/VETRINA 1b/QUAGLIA_1.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "QUAGLIA",
+      "image_path": "img/VETRINA 1b/QUAGLIA_2.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "TORDELA",
+      "image_path": "img/VETRINA 1b/TORDELA.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "TORDO BOTTACCIO",
+      "image_path": "img/VETRINA 1b/TORDO BOTTACCIO.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "TORDO SASSELLO",
+      "image_path": "img/VETRINA 1b/TORDO SASSELLO.png",
+      "vetrina": "VETRINA 1b"
+    },
+    {
+      "name": "CANAPIGLIA",
+      "image_path": "img/VETRINA 2a/CANAPIGLIA.png",
+      "vetrina": "VETRINA 2a"
+    },
+    {
+      "name": "CODONE",
+      "image_path": "img/VETRINA 2a/CODONE.png",
+      "vetrina": "VETRINA 2a"
+    },
+    {
+      "name": "GERMANO REALE",
+      "image_path": "img/VETRINA 2a/GERMANO REALE.png",
+      "vetrina": "VETRINA 2a"
+    },
+    {
+      "name": "MESTOLONE",
+      "image_path": "img/VETRINA 2a/MESTOLONE.png",
+      "vetrina": "VETRINA 2a"
+    },
+    {
+      "name": "MORETTA TABACCATA",
+      "image_path": "img/VETRINA 2a/MORETTA TABACCATA.png",
+      "vetrina": "VETRINA 2a"
+    },
+    {
+      "name": "QUATTROCCHI",
+      "image_path": "img/VETRINA 2a/QUATTROCCHI.png",
+      "vetrina": "VETRINA 2a"
+    },
+    {
+      "name": "SMERGO MINORE",
+      "image_path": "img/VETRINA 2a/SMERGO MINORE.png",
+      "vetrina": "VETRINA 2a"
+    },
+    {
+      "name": "ALZAVOLA",
+      "image_path": "img/VETRINA 2b/ALZAVOLA.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "FISCHIONE",
+      "image_path": "img/VETRINA 2b/FISCHIONE.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "FISTIONE TURCO",
+      "image_path": "img/VETRINA 2b/FISTIONE TURCO.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "MARZAIOLA",
+      "image_path": "img/VETRINA 2b/MARZAIOLA.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "MORETTA",
+      "image_path": "img/VETRINA 2b/MORETTA.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "MORIGLIONE",
+      "image_path": "img/VETRINA 2b/MORIGLIONE.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "SMERGO MAGGIORE",
+      "image_path": "img/VETRINA 2b/SMERGO MAGGIORE F.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "VOLPOCA",
+      "image_path": "img/VETRINA 2b/VOLPOCA.png",
+      "vetrina": "VETRINA 2b"
+    },
+    {
+      "name": "COMBATTENTE",
+      "image_path": "img/VETRINA 3a/COMBATTENTE.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "CORRIERE PICCOLO",
+      "image_path": "img/VETRINA 3a/CORRIERE PICCOLO.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "CUCLO",
+      "image_path": "img/VETRINA 3a/CUCLO.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "GAMBECCHIO",
+      "image_path": "img/VETRINA 3a/GAMBECCHIO.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "GHIANDAIA MARINA",
+      "image_path": "img/VETRINA 3a/GHIANDAIA MARINA.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "GRUCCIONE",
+      "image_path": "img/VETRINA 3a/GRUCCIONE.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "MARTIN PESCATORE",
+      "image_path": "img/VETRINA 3a/MARTIN PESCATORE.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "MERLO ACQUAIOLO",
+      "image_path": "img/VETRINA 3a/MERLO ACQUAIOLO.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "OCCHIONE",
+      "image_path": "img/VETRINA 3a/OCCHIONE.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "PAVONCELLA",
+      "image_path": "img/VETRINA 3a/PAVONCELLA.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "PETTEGOLA",
+      "image_path": "img/VETRINA 3a/PETTEGOLA.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "PIRO PIRO PICCOLO",
+      "image_path": "img/VETRINA 3a/PIRO PIRO PICCOLO.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "RE DI QUAGLIE",
+      "image_path": "img/VETRINA 3a/RE DI QUAGLIE.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "SCHIRIBILLA",
+      "image_path": "img/VETRINA 3a/SCHIRIBILLA.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "SMERGO MAGGIORE",
+      "image_path": "img/VETRINA 3a/SMERGO MAGGIORE F.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "STROLAGA MINORE",
+      "image_path": "img/VETRINA 3a/STROLAGA MINORE.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "SUCCIACAPRE",
+      "image_path": "img/VETRINA 3a/SUCCIACAPRE.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "VOLTOLINO",
+      "image_path": "img/VETRINA 3a/VOLTOLINO.png",
+      "vetrina": "VETRINA 3a"
+    },
+    {
+      "name": "AVERLA CAPIROSSO",
+      "image_path": "img/VETRINA 4a/AVERLA CAPIROSSO.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "AVERLA CENERINA",
+      "image_path": "img/VETRINA 4a/AVERLA CENERINA.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "AVERLA MAGGIORE",
+      "image_path": "img/VETRINA 4a/AVERLA MAGGIORE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "AVERLA MINORE",
+      "image_path": "img/VETRINA 4a/AVERLA MINORE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "AVERLA PICCOLA",
+      "image_path": "img/VETRINA 4a/AVERLA PICCOLA.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "BALLERINA GIALLA",
+      "image_path": "img/VETRINA 4a/BALLERINA GIALLA.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "CUTRETTOLA CAPOCINERINO",
+      "image_path": "img/VETRINA 4a/CUTRETTOLA CAPOCINERINO.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "CUTRETTOLA GIALLA",
+      "image_path": "img/VETRINA 4a/CUTRETTOLA GIALLA.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "FANELLO",
+      "image_path": "img/VETRINA 4a/FANELLO.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "FROSONE",
+      "image_path": "img/VETRINA 4a/FROSONE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "GRIFONE",
+      "image_path": "img/VETRINA 4a/GRIFONE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "LUCHERINO",
+      "image_path": "img/VETRINA 4a/LUCHERINO.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "LUCHERINO",
+      "image_path": "img/VETRINA 4a/LUCHERINO_2.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "MIGLIARINO DI PALUDE",
+      "image_path": "img/VETRINA 4a/MIGLIARINO DI PALUDE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "MIGLIARINO DI PALUDE",
+      "image_path": "img/VETRINA 4a/MIGLIARINO DI PALUDE_2.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "ORGANETTO MINORE",
+      "image_path": "img/VETRINA 4a/ORGANETTO MINORE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "ORGANETTO MINORE",
+      "image_path": "img/VETRINA 4a/ORGANETTO MINORE_2.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "ORTOLANO",
+      "image_path": "img/VETRINA 4a/ORTOLANO.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "PEPPOLA",
+      "image_path": "img/VETRINA 4a/PEPPOLA.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "PETTAZZURRO",
+      "image_path": "img/VETRINA 4a/PETTAZZURRO.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "PRISPOLONE",
+      "image_path": "img/VETRINA 4a/PRISPOLONE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "VENTURONE",
+      "image_path": "img/VETRINA 4a/VENTURONE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "VERDONE",
+      "image_path": "img/VETRINA 4a/VERDONE.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "VERZELLINO",
+      "image_path": "img/VETRINA 4a/VERZELLINO.png",
+      "vetrina": "VETRINA 4a"
+    },
+    {
+      "name": "BALESTRUCCIO",
+      "image_path": "img/VETRINA 4b/BALESTRUCCIO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "BALLERINA BIANCA",
+      "image_path": "img/VETRINA 4b/BALLERINA BIANCA.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CALANDRO",
+      "image_path": "img/VETRINA 4b/CALANDRO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CARDELLINO",
+      "image_path": "img/VETRINA 4b/CARDELLINO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CIUFFOLOTTO",
+      "image_path": "img/VETRINA 4b/CIUFFOLOTTO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CODIROSSO SPAZZACAMINO",
+      "image_path": "img/VETRINA 4b/CODIROSSO SPAZZACAMINO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CODIROSSO",
+      "image_path": "img/VETRINA 4b/CODIROSSO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CROCIERE",
+      "image_path": "img/VETRINA 4b/CROCIERE.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CULBIANCO",
+      "image_path": "img/VETRINA 4b/CULBIANCO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CUTRETTOLA CAPINERA",
+      "image_path": "img/VETRINA 4b/CUTRETTOLA CAPINERA.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "PICCHIO CENERINO",
+      "image_path": "img/VETRINA 4b/PICCHIO CENERINO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "PICCHIO ROSSO MAGGIORE",
+      "image_path": "img/VETRINA 4b/PICCHIO ROSSO MAGGIORE.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "PICCHIO ROSSO MINORE",
+      "image_path": "img/VETRINA 4b/PICCHIO ROSSO MINORE.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "PICCHIO VERDE",
+      "image_path": "img/VETRINA 4b/PICCHIO VERDE.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "PISPOLA",
+      "image_path": "img/VETRINA 4b/PISPOLA.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "RONDINE",
+      "image_path": "img/VETRINA 4b/RONDINE.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "RONDONE MAGGIORE",
+      "image_path": "img/VETRINA 4b/RONDONE MAGGIORE.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "RONDONE",
+      "image_path": "img/VETRINA 4b/RONDONE.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "RONDONE",
+      "image_path": "img/VETRINA 4b/RONDONE_2.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "SALTIMPALO",
+      "image_path": "img/VETRINA 4b/SALTIMPALO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "SPIONCELLO ALBINO",
+      "image_path": "img/VETRINA 4b/SPIONCELLO ALBINO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "SPIONCELLO",
+      "image_path": "img/VETRINA 4b/SPIONCELLO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "STIACCINO",
+      "image_path": "img/VETRINA 4b/STIACCINO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "USIGNOLO DI FIUME",
+      "image_path": "img/VETRINA 4b/USIGNOLO DI FIUME.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "USIGNOLO",
+      "image_path": "img/VETRINA 4b/USIGNOLO.png",
+      "vetrina": "VETRINA 4b"
+    },
+    {
+      "name": "CICOGNA NERA",
+      "image_path": "img/VETRINA 5a/CICOGNA NERA.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "CORNACCHIA GRIGIA",
+      "image_path": "img/VETRINA 5a/CORNACCHIA GRIGIA.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "CORNACCHIA NERA",
+      "image_path": "img/VETRINA 5a/CORNACCHIA NERA.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "CORVO COMUNE",
+      "image_path": "img/VETRINA 5a/CORVO COMUNE.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "CORVO IMPERIALE",
+      "image_path": "img/VETRINA 5a/CORVO IMPERIALE.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "GRACCHIO ALPINO",
+      "image_path": "img/VETRINA 5a/GRACCHIO ALPINO.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "GRACCHIO CORALLINO",
+      "image_path": "img/VETRINA 5a/GRACCHIO CORALLINO.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "OCA LOMBARDELLA",
+      "image_path": "img/VETRINA 5a/OCA LOMBARDELLA.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "TACCOLA",
+      "image_path": "img/VETRINA 5a/TACCOLA.png",
+      "vetrina": "VETRINA 5a"
+    },
+    {
+      "name": "AIRONE GUARDABUOI",
+      "image_path": "img/VETRINA 5b/AIRONE GUARDABUOI.png",
+      "vetrina": "VETRINA 5b"
+    },
+    {
+      "name": "CORMORANO",
+      "image_path": "img/VETRINA 5b/CORMORANO.png",
+      "vetrina": "VETRINA 5b"
+    },
+    {
+      "name": "GAZZA",
+      "image_path": "img/VETRINA 5b/GAZZA.png",
+      "vetrina": "VETRINA 5b"
+    },
+    {
+      "name": "GHIANDAIA",
+      "image_path": "img/VETRINA 5b/GHIANDAIA.png",
+      "vetrina": "VETRINA 5b"
+    },
+    {
+      "name": "GRU",
+      "image_path": "img/VETRINA 5b/GRU.png",
+      "vetrina": "VETRINA 5b"
+    },
+    {
+      "name": "NOCCIOLAIA",
+      "image_path": "img/VETRINA 5b/NOCCIOLAIA.png",
+      "vetrina": "VETRINA 5b"
+    },
+    {
+      "name": "NOCCIOLAIA",
+      "image_path": "img/VETRINA 5b/NOCCIOLAIA_2.png",
+      "vetrina": "VETRINA 5b"
+    },
+    {
+      "name": "AIRONE CENERINO",
+      "image_path": "img/VETRINA 6a/AIRONE CENERINO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "AIRONE ROSSO",
+      "image_path": "img/VETRINA 6a/AIRONE ROSSO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "ALLODOLA",
+      "image_path": "img/VETRINA 6a/ALLODOLA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "BECCOFROSONE",
+      "image_path": "img/VETRINA 6a/BECCOFROSONE.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CALANDRELLA",
+      "image_path": "img/VETRINA 6a/CALANDRELLA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CALANDRO",
+      "image_path": "img/VETRINA 6a/CALANDRO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CANAPINO",
+      "image_path": "img/VETRINA 6a/CANAPINO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CANNAIOLA",
+      "image_path": "img/VETRINA 6a/CANNAIOLA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CANNARECCIONE",
+      "image_path": "img/VETRINA 6a/CANNARECCIONE.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CAPINERA",
+      "image_path": "img/VETRINA 6a/CAPINERA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CAPPELLACCIA",
+      "image_path": "img/VETRINA 6a/CAPPELLACCIA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CINCIA BIGIA",
+      "image_path": "img/VETRINA 6a/CINCIA BIGIA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CINCIA DAL CIUFFO",
+      "image_path": "img/VETRINA 6a/CINCIA DAL CIUFFO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CINCIA MORA",
+      "image_path": "img/VETRINA 6a/CINCIA MORA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CINCIALLEGRA",
+      "image_path": "img/VETRINA 6a/CINCIALLEGRA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CINCIALLEGRA",
+      "image_path": "img/VETRINA 6a/CINCIALLEGRA_2.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "CODIBUGNOLI",
+      "image_path": "img/VETRINA 6a/CODIBUGNOLI.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "FORAPAGLIE",
+      "image_path": "img/VETRINA 6a/FORAPAGLIE.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "LUI' PICCOLO",
+      "image_path": "img/VETRINA 6a/LUI' PICCOLO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "RIGOGOLO",
+      "image_path": "img/VETRINA 6a/RIGOGOLO (m e f).png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "SCRICCIOLO",
+      "image_path": "img/VETRINA 6a/SCRICCIOLO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "TARABUSINO",
+      "image_path": "img/VETRINA 6a/TARABUSINO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "TARABUSO",
+      "image_path": "img/VETRINA 6a/TARABUSO.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "TOTTAVILLA",
+      "image_path": "img/VETRINA 6a/TOTTAVILLA.png",
+      "vetrina": "VETRINA 6a"
+    },
+    {
+      "name": "BALIA DAL COLLARE",
+      "image_path": "img/VETRINA 6b/BALIA DAL COLLARE.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "BALIA NERA",
+      "image_path": "img/VETRINA 6b/BALIA NERA.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "CROCIERE",
+      "image_path": "img/VETRINA 6b/CROCIERE.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "FIORRANCINO",
+      "image_path": "img/VETRINA 6b/FIORRANCINO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "NITTICORA",
+      "image_path": "img/VETRINA 6b/NITTICORA.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "PASSERA SCOPAIOLA",
+      "image_path": "img/VETRINA 6b/PASSERA SCOPAIOLA.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "PASSERO D'ITALIA m e",
+      "image_path": "img/VETRINA 6b/PASSERO D'ITALIA m e f.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "PASSERO MATTUGIA",
+      "image_path": "img/VETRINA 6b/PASSERO MATTUGIA.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "PASSERO SOLITARIO",
+      "image_path": "img/VETRINA 6b/PASSERO SOLITARIO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "PICCHIO MURAIOLO",
+      "image_path": "img/VETRINA 6b/PICCHIO MURAIOLO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "PICCHIO MURATORE",
+      "image_path": "img/VETRINA 6b/PICCHIO MURATORE.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "RAMPICHINO ALPESTRE",
+      "image_path": "img/VETRINA 6b/RAMPICHINO ALPESTRE.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "REGOLO",
+      "image_path": "img/VETRINA 6b/REGOLO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "STORNO",
+      "image_path": "img/VETRINA 6b/STORNO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "STRILLOZZO",
+      "image_path": "img/VETRINA 6b/STRILLOZZO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "TARABUSO",
+      "image_path": "img/VETRINA 6b/TARABUSO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "TOPINO",
+      "image_path": "img/VETRINA 6b/TOPINO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "UPUPA",
+      "image_path": "img/VETRINA 6b/UPUPA.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "ZIGOLO DELLE NEVI",
+      "image_path": "img/VETRINA 6b/ZIGOLO DELLE NEVI.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "ZIGOLO GIALLO",
+      "image_path": "img/VETRINA 6b/ZIGOLO GIALLO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "ZIGOLO MUCIATTO",
+      "image_path": "img/VETRINA 6b/ZIGOLO MUCIATTO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "ZIGOLO NERO",
+      "image_path": "img/VETRINA 6b/ZIGOLO NERO.png",
+      "vetrina": "VETRINA 6b"
+    },
+    {
+      "name": "ALBANELLA REALE",
+      "image_path": "img/VETRINA 7a/ALBANELLA REALE.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "ASTORE",
+      "image_path": "img/VETRINA 7a/ASTORE.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "ASTORE",
+      "image_path": "img/VETRINA 7a/ASTORE_2.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "FALCO DI PALUDE",
+      "image_path": "img/VETRINA 7a/FALCO DI PALUDE.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "FALCO PECCHIAIOLO",
+      "image_path": "img/VETRINA 7a/FALCO PECCHIAIOLO.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "FALCO PELLEGRINO",
+      "image_path": "img/VETRINA 7a/FALCO PELLEGRINO.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "GUFO REALE",
+      "image_path": "img/VETRINA 7a/GUFO REALE.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "NIBBIO BRUNO",
+      "image_path": "img/VETRINA 7a/NIBBIO BRUNO.png",
+      "vetrina": "VETRINA 7a"
+    },
+    {
+      "name": "ALLOCCO",
+      "image_path": "img/VETRINA 7b/ALLOCCO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "ASSIOLO",
+      "image_path": "img/VETRINA 7b/ASSIOLO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "CIVETTA CAPOGROSSO",
+      "image_path": "img/VETRINA 7b/CIVETTA CAPOGROSSO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "CIVETTA COMUNE",
+      "image_path": "img/VETRINA 7b/CIVETTA COMUNE.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "CIVETTA NANA",
+      "image_path": "img/VETRINA 7b/CIVETTA NANA.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "FALCO CUCULO",
+      "image_path": "img/VETRINA 7b/FALCO CUCULO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "GHEPPIO ALBINO",
+      "image_path": "img/VETRINA 7b/GHEPPIO ALBINO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "GHEPPIO",
+      "image_path": "img/VETRINA 7b/GHEPPIO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "GHEPPIO",
+      "image_path": "img/VETRINA 7b/GHEPPIO_2.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "GUFO COMUNE",
+      "image_path": "img/VETRINA 7b/GUFO COMUNE.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "GUFO DI PALUDE",
+      "image_path": "img/VETRINA 7b/GUFO DI PALUDE.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "LODOLAIO",
+      "image_path": "img/VETRINA 7b/LODOLAIO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "POIANA",
+      "image_path": "img/VETRINA 7b/POIANA.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "SMERIGLIO",
+      "image_path": "img/VETRINA 7b/SMERIGLIO.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "SMERIGLIO",
+      "image_path": "img/VETRINA 7b/SMERIGLIO_2.png",
+      "vetrina": "VETRINA 7b"
+    },
+    {
+      "name": "SPARVIERE",
+      "image_path": "img/VETRINA 7b/SPARVIERE.png",
+      "vetrina": "VETRINA 7b"
+    }
+  ]
+}
