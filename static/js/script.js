@@ -362,45 +362,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /** 9. Aggiorna visibilità UI in base alla modalità */
     function updateUIVisibility() {
-        // Trova l'icona span dentro il bottone
-        const iconSpan = modeSwitchButton ? modeSwitchButton.querySelector('span.material-symbols-outlined') : null;
+         // Find the icon span inside the button
+         const iconSpan = modeSwitchButton ? modeSwitchButton.querySelector('span.material-symbols-outlined') : null;
 
-        // Assicurati che gli elementi esistano prima di modificarli
-        if (!quizSetupContainer || !pdfViewerContainer) {
-            console.error("Elementi container mancanti (quizSetupContainer o pdfViewerContainer)");
-            return;
-        }
-
-        if (appMode === 'quiz') {
-            bodyElement.classList.remove('pdf-mode');
+         if (appMode === 'quiz') {
+            bodyElement.classList.remove('pdf-mode'); // Use pdf-mode class
             bodyElement.classList.add('quiz-mode');
-
-            // Mostra il setup del quiz, nascondi il visualizzatore PDF
-            quizSetupContainer.style.display = 'block'; // O 'flex', 'grid', ecc. se necessario
-            pdfViewerContainer.style.display = 'none';
-
-            // Imposta icona per indicare "Vai al PDF"
-            if (iconSpan) iconSpan.textContent = 'picture_as_pdf'; // Icona PDF
-            if (modeSwitchButton) modeSwitchButton.title = 'Visualizza PDF'; // Aggiorna tooltip
-            // La visibilità della flashcard è gestita altrove
-        } else { // pdf mode
+            // Set icon to show "Go to PDF" action
+            if (iconSpan) iconSpan.textContent = 'picture_as_pdf'; // PDF icon
+            if (modeSwitchButton) modeSwitchButton.title = 'Visualizza PDF'; // Update tooltip
+            // Flashcard visibility is controlled by handleStartExercise/validateVetrinaSelectionQuiz
+         } else { // pdf mode
             bodyElement.classList.remove('quiz-mode');
-            bodyElement.classList.add('pdf-mode');
-
-            // Nascondi il setup del quiz, mostra il visualizzatore PDF
-            quizSetupContainer.style.display = 'none';
-            pdfViewerContainer.style.display = 'block'; // O 'flex', 'grid', ecc. se necessario
-
-            // Imposta icona per indicare "Vai al Quiz"
-            if (iconSpan) iconSpan.textContent = 'quiz'; // Icona Quiz
-            if (modeSwitchButton) modeSwitchButton.title = 'Vai al Quiz'; // Aggiorna tooltip
-            if (flashcardContainer) flashcardContainer.style.display = 'none'; // Assicurati che la flashcard sia nascosta
-        }
-
-        // Assicurati che l'indicatore di caricamento sia spento se non sta caricando
-        if (!isLoading) {
+            bodyElement.classList.add('pdf-mode'); // Use pdf-mode class
+            // Set icon to show "Go to Quiz" action
+            if (iconSpan) iconSpan.textContent = 'quiz'; // Quiz icon
+            if (modeSwitchButton) modeSwitchButton.title = 'Vai al Quiz'; // Update tooltip
+            if (flashcardContainer) flashcardContainer.style.display = 'none'; // Ensure flashcard is hidden
+         }
+         // Ensure loading indicator is off if not loading
+         if (!isLoading) {
             setLoadingState(false);
-        }
+         }
     }
 
      /** 10. Resetta stato UI quando si cambia modalità */
