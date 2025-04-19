@@ -40,31 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // Disable relevant controls based on mode and loading state
         if (appMode === 'quiz') {
-            // Add null check for startExerciseButton
-            if (startExerciseButton) {
-                startExerciseButton.disabled = loading || currentVetrinaSelectionQuiz.length === 0;
-            }
-            // Add null check for flashcardContainer before accessing style
-            if (flashcardContainer && flashcardContainer.style.display !== 'none') { // Only disable quiz options if quiz is active
-                 // Add null check for nextButton
-                 if (nextButton) {
-                     nextButton.disabled = loading;
-                 }
-                 // Add null check for optionsContainer - This prevents the error
-                 if (optionsContainer) {
-                     optionsContainer.querySelectorAll('button').forEach(button => button.disabled = loading);
-                 }
+            startExerciseButton.disabled = loading || currentVetrinaSelectionQuiz.length === 0;
+            if (flashcardContainer.style.display !== 'none') { // Only disable quiz options if quiz is active
+                 nextButton.disabled = loading;
+                 optionsContainer.querySelectorAll('button').forEach(button => button.disabled = loading);
             }
         }
-        // Add null check for modeSwitchButton
-        if (modeSwitchButton) {
-            modeSwitchButton.disabled = loading;
-        }
+        modeSwitchButton.disabled = loading;
 
         // Disable interaction with vetrina cards during loading
         const grids = [vetrinaGridQuiz, vetrinaGridGallery];
         grids.forEach(grid => {
-            // Check if grid element exists (already correctly done)
             if (grid) {
                 grid.querySelectorAll('.vetrina-item').forEach(item => {
                     item.style.pointerEvents = loading ? 'none' : 'auto';
