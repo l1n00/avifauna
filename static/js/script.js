@@ -1,23 +1,34 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Selezione Elementi DOM ---
+    // Quiz elements
+    const quizSetupContainer = document.getElementById('quiz-setup-container');
+    const vetrinaGridQuiz = document.getElementById('vetrina-grid-quiz');
+    const startExerciseButton = document.getElementById('start-exercise-button');
+    const selectionFeedback = document.getElementById('selection-feedback');
+    const flashcardContainer = document.getElementById('flashcard');
     const birdImage = document.getElementById('bird-image');
     const optionsContainer = document.getElementById('multiple-choice-options');
     const nextButton = document.getElementById('next-card');
     const feedbackPara = document.getElementById('feedback');
     const correctAnswerPara = document.getElementById('correct-answer');
+    // Gallery elements
+    const galleryViewContainer = document.getElementById('gallery-view');
+    const vetrinaGridGallery = document.getElementById('vetrina-grid-gallery');
+    const galleryContentContainer = document.getElementById('gallery-content');
+    // Shared elements
     const loadingIndicator = document.getElementById('loading');
-    const flashcardContainer = document.getElementById('flashcard');
-    const vetrinaGridContainer = document.getElementById('vetrina-grid');
-    const startExerciseButton = document.getElementById('start-exercise-button');
-    const selectionFeedback = document.getElementById('selection-feedback');
+    const modeSwitchButton = document.getElementById('mode-switch-button');
+    const bodyElement = document.body;
 
     // --- Stato Applicazione Globale ---
-    let isLoading = false; // Flag per operazioni in corso
-    let allBirdsData = []; // Conterrà tutti i dati degli uccelli da data.json
-    let allVetrine = [];   // Conterrà la lista delle vetrine da data.json
-    let currentCorrectName = ''; // Nome corretto dell'uccello nella card attuale
-    let currentFilteredBirds = []; // Lista uccelli filtrata per la sessione corrente
-    let currentVetrinaSelection = []; // Vetrine selezionate dall'utente
+    let appMode = 'quiz'; // 'quiz' or 'gallery'
+    let isLoading = false;
+    let allBirdsData = [];
+    let allVetrine = [];
+    // Quiz specific state
+    let currentCorrectName = '';
+    let currentFilteredBirds = [];
+    let currentVetrinaSelectionQuiz = []; // Vetrine selected for the quiz
 
     // --- Funzioni Helper ---
 
@@ -27,13 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (loadingIndicator) {
             loadingIndicator.style.display = loading ? 'block' : 'none';
         }
-        nextButton.disabled = loading;
-        startExerciseButton.disabled = loading;
-        optionsContainer.querySelectorAll('button').forEach(button => button.disabled = loading);
-        // Disabilita interazione con le card vetrina durante caricamento card/dati
-        vetrinaGridContainer.querySelectorAll('.vetrina-item').forEach(item => {
-             item.style.pointerEvents = loading ? 'none' : 'auto';
-             item.style.opacity = loading ? '0.7' : '1';
+        // Disable relevant controls based on mode and loading state
+        if (appMode === 'quiz') {
+            startExerciseButton.disabled = loading || currentVetrinaSelectionQuiz.length === 0;
+            if (flashcardContainer.style.display !== 'none') { // Only disable quiz options if quiz is active
+                 nextButton.disabled = loading;
+                 optionsContainer.querySelectorAll('button').forEach(button => button.disabled = loading);
+            }
+        }
+        modeSwitchButton.disabled = loading;
+
+        // Disable interaction with vetrina cards during loading
+        const grids = [vetrinaGridQuiz, vetrinaGridGallery];
+        grids.forEach(grid => {
+            if (grid) {
+                grid.querySelectorAll('.vetrina-item').forEach(item => {
+                    item.style.pointerEvents = loading ? 'none' : 'auto';
+                    item.style.opacity = loading ? '0.7' : '1';
+                });
+            }
         });
     }
 
@@ -57,107 +80,146 @@ document.addEventListener('DOMContentLoaded', () => {
     /** 1. Carica i dati da data.json all'avvio */
     async function loadAppData() {
         console.log("Caricamento dati da data.json...");
-        setLoadingState(true); // Mostra caricamento iniziale
+        setLoadingState(true);
         try {
-            // Assumiamo che data.json sia allo stesso livello o percorso accessibile
             const response = await fetch('data.json');
-            if (!response.ok) {
-                throw new Error(`Errore HTTP ${response.status}: Impossibile caricare data.json`);
-            }
+            if (!response.ok) throw new Error(`Errore HTTP ${response.status}: Impossibile caricare data.json`);
             const data = await response.json();
-
-            if (!data || !data.vetrine || !data.birds) {
-                throw new Error("Formato data.json non valido.");
-            }
+            if (!data || !data.vetrine || !data.birds) throw new Error("Formato data.json non valido.");
 
             allVetrine = data.vetrine;
             allBirdsData = data.birds;
             console.log(`Dati caricati: ${allVetrine.length} vetrine, ${allBirdsData.length} uccelli.`);
 
-            renderVetrinaGrid(); // Popola la griglia delle vetrine
+            renderVetrinaGrids(); // Popola entrambe le griglie
 
         } catch (error) {
             console.error("Errore caricamento/parsing data.json:", error);
-            vetrinaGridContainer.innerHTML = `<p class="feedback-error">Errore fatale: Impossibile caricare i dati dell'applicazione. ${error.message}</p>`;
-            startExerciseButton.disabled = true; // Disabilita tutto se i dati non caricano
+            // Display error in both potential grid locations
+            const errorMsg = `<p class="feedback-error">Errore fatale: Impossibile caricare i dati. ${error.message}</p>`;
+            if (vetrinaGridQuiz) vetrinaGridQuiz.innerHTML = errorMsg;
+            if (vetrinaGridGallery) vetrinaGridGallery.innerHTML = errorMsg;
+            startExerciseButton.disabled = true;
+            modeSwitchButton.disabled = true;
         } finally {
-            setLoadingState(false); // Nascondi caricamento iniziale
+            setLoadingState(false);
+            updateUIVisibility(); // Ensure correct view is shown initially
         }
     }
 
-    /** 2. Crea la griglia di vetrine cliccabili (usa allVetrine) */
-    function renderVetrinaGrid() {
-        vetrinaGridContainer.innerHTML = ''; // Pulisce
+    /** 2. Crea le griglie di vetrine (per Quiz e Galleria) */
+    function renderVetrinaGrids() {
+        // Clear both grids
+        if (vetrinaGridQuiz) vetrinaGridQuiz.innerHTML = '';
+        if (vetrinaGridGallery) vetrinaGridGallery.innerHTML = '';
+
         if (allVetrine.length === 0) {
-            vetrinaGridContainer.innerHTML = `<p>Nessuna vetrina disponibile.</p>`;
+            const noVetrinaMsg = `<p>Nessuna vetrina disponibile.</p>`;
+            if (vetrinaGridQuiz) vetrinaGridQuiz.innerHTML = noVetrinaMsg;
+            if (vetrinaGridGallery) vetrinaGridGallery.innerHTML = noVetrinaMsg;
             startExerciseButton.disabled = true;
             return;
         }
-        allVetrine.forEach(vetrinaName => { // Usa la variabile globale
-            const card = document.createElement('div');
-            card.classList.add('vetrina-item');
-            const displayName = vetrinaName.replace(/^vetrina\s+/i, ''); // Rimuovi "VETRINA "
-            card.textContent = displayName;
-            card.dataset.vetrina = vetrinaName; // Memorizza nome completo
-            card.classList.add('selected');     // Seleziona di default
 
-            card.addEventListener('click', () => {
-                card.classList.toggle('selected');
-                validateVetrinaSelection();
-            });
-            vetrinaGridContainer.appendChild(card);
+        allVetrine.forEach(vetrinaName => {
+            const displayName = vetrinaName.replace(/^vetrina\s+/i, '');
+
+            // Create card for Quiz grid
+            if (vetrinaGridQuiz) {
+                const cardQuiz = createVetrinaCard(vetrinaName, displayName);
+                cardQuiz.addEventListener('click', handleVetrinaClickQuizMode);
+                vetrinaGridQuiz.appendChild(cardQuiz);
+            }
+
+            // Create card for Gallery grid
+            if (vetrinaGridGallery) {
+                const cardGallery = createVetrinaCard(vetrinaName, displayName);
+                cardGallery.addEventListener('click', handleVetrinaClickGalleryMode);
+                vetrinaGridGallery.appendChild(cardGallery);
+            }
         });
-        startExerciseButton.disabled = false; // Abilita bottone
-        validateVetrinaSelection(); // Controlla stato iniziale
+
+        validateVetrinaSelectionQuiz(); // Validate quiz selection initially
     }
 
-    /** Funzione helper per validare la selezione delle vetrine */
-    function validateVetrinaSelection() {
-        const selectedItems = vetrinaGridContainer.querySelectorAll('.vetrina-item.selected');
-         currentVetrinaSelection = Array.from(selectedItems).map(item => item.dataset.vetrina); // Aggiorna selezione globale
-
-        if (currentVetrinaSelection.length === 0) {
-             selectionFeedback.style.display = 'block';
-             startExerciseButton.disabled = true;
-             flashcardContainer.style.display = 'none'; // Nascondi flashcard se deselezionano tutto
-             return false;
-         } else {
-             selectionFeedback.style.display = 'none';
-             startExerciseButton.disabled = isLoading;
-             return true;
-         }
+    /** Helper to create a single vetrina card element */
+    function createVetrinaCard(vetrinaName, displayName) {
+        const card = document.createElement('div');
+        card.classList.add('vetrina-item');
+        card.textContent = displayName;
+        card.dataset.vetrina = vetrinaName;
+        return card;
     }
 
-    /** 3. Gestisce il click su "Avvia / Aggiorna Esercizio" */
+    /** Gestisce click su vetrina in modalità QUIZ */
+    function handleVetrinaClickQuizMode(event) {
+        if (isLoading) return;
+        const card = event.currentTarget;
+        card.classList.toggle('selected');
+        validateVetrinaSelectionQuiz();
+    }
+
+    /** Gestisce click su vetrina in modalità GALLERIA */
+    function handleVetrinaClickGalleryMode(event) {
+        if (isLoading) return;
+        const card = event.currentTarget;
+        const vetrinaName = card.dataset.vetrina;
+
+        // Highlight active vetrina in gallery grid
+        if (vetrinaGridGallery) {
+             vetrinaGridGallery.querySelectorAll('.vetrina-item.active').forEach(item => item.classList.remove('active'));
+        }
+        card.classList.add('active');
+
+        displayGalleryForVetrina(vetrinaName);
+    }
+
+
+    /** Valida la selezione delle vetrine per il QUIZ */
+    function validateVetrinaSelectionQuiz() {
+        const selectedItems = vetrinaGridQuiz.querySelectorAll('.vetrina-item.selected');
+        currentVetrinaSelectionQuiz = Array.from(selectedItems).map(item => item.dataset.vetrina);
+
+        const hasSelection = currentVetrinaSelectionQuiz.length > 0;
+        selectionFeedback.style.display = hasSelection ? 'none' : 'block';
+        startExerciseButton.disabled = isLoading || !hasSelection;
+
+        // If user deselects all vetrine while quiz is running, hide the flashcard
+        if (!hasSelection && flashcardContainer.style.display !== 'none') {
+             flashcardContainer.style.display = 'none';
+        }
+        return hasSelection;
+    }
+
+    /** 3. Gestisce il click su "Avvia / Aggiorna Esercizio" (QUIZ) */
     function handleStartExercise() {
-        // La validazione ora aggiorna anche currentVetrinaSelection
-        if (!validateVetrinaSelection()) return;
+        if (!validateVetrinaSelectionQuiz()) return; // Ensure selection is still valid
 
-        console.log("Avvio/Aggiornamento esercizio con vetrine:", currentVetrinaSelection);
+        console.log("Avvio/Aggiornamento ESERCIZIO con vetrine:", currentVetrinaSelectionQuiz);
 
-        // Filtra gli uccelli UNA VOLTA per questa sessione di esercizio
         currentFilteredBirds = allBirdsData.filter(bird =>
-            currentVetrinaSelection.includes(bird.vetrina)
+            currentVetrinaSelectionQuiz.includes(bird.vetrina)
         );
         console.log(`Filtrati ${currentFilteredBirds.length} uccelli per l'esercizio.`);
 
         if (currentFilteredBirds.length === 0) {
              feedbackPara.textContent = "Nessun uccello trovato per le vetrine selezionate.";
              feedbackPara.className = 'feedback-error';
-             flashcardContainer.style.display = 'flex'; // Mostra flashcard ma con errore
-             optionsContainer.innerHTML = ''; // Pulisci opzioni
-             birdImage.style.display = 'none'; // Nascondi immagine
-             nextButton.style.display = 'none'; // Nascondi prossima
-             return;
+             optionsContainer.innerHTML = '';
+             birdImage.style.display = 'none';
+             nextButton.style.display = 'none';
+        } else {
+             displayNewCard(); // Mostra la prima card filtrata
         }
-
-        flashcardContainer.style.display = 'flex'; // Mostra contenitore
-        displayNewCard(); // Mostra la prima card filtrata
+        flashcardContainer.style.display = 'flex'; // Mostra contenitore quiz
     }
 
-    /** 4. NUOVA Funzione: Mostra una nuova card (logica ex-backend) */
+    /** 4. Mostra una nuova card (QUIZ) (Mostly Unchanged) */
     function displayNewCard() {
-        if (isLoading) return; // Evita se già in corso
+        // ... (Keep the existing displayNewCard function logic as is) ...
+        // Make sure it uses `currentFilteredBirds` and `currentCorrectName`
+        // Ensure setLoadingState is called appropriately within this function
+        if (isLoading) return;
         if (currentFilteredBirds.length === 0) {
              console.error("displayNewCard chiamata ma non ci sono uccelli filtrati.");
              feedbackPara.textContent = "Errore: nessun uccello disponibile per le vetrine selezionate.";
@@ -166,28 +228,22 @@ document.addEventListener('DOMContentLoaded', () => {
              return;
         }
 
-        setLoadingState(true); // Simula caricamento per feedback visivo
+        setLoadingState(true);
 
-        // Reset UI parziale (diverso da fetchNewCard)
         feedbackPara.textContent = ''; feedbackPara.className = '';
         correctAnswerPara.style.display = 'none'; correctAnswerPara.textContent = '';
         optionsContainer.innerHTML = '';
         nextButton.style.display = 'none';
         birdImage.style.display = 'none'; birdImage.src = '';
 
-        // 1. Scegli l'uccello corretto dalla lista GIA' filtrata
         const correctBird = currentFilteredBirds[Math.floor(Math.random() * currentFilteredBirds.length)];
-        currentCorrectName = correctBird.name; // Imposta nome corretto globale
+        currentCorrectName = correctBird.name;
 
-        // 2. Genera opzioni sbagliate dalla lista filtrata
         let wrongOptions = [];
-        // Uccelli possibili per opzioni sbagliate (diversi da quello corretto)
         const possibleWrongBirds = currentFilteredBirds.filter(bird => bird.name !== currentCorrectName);
-        // Quante opzioni sbagliate prendere (massimo 2, ma anche meno se non ce ne sono)
         const numWrongToSample = Math.min(2, possibleWrongBirds.length);
 
         if (numWrongToSample > 0) {
-            // Estrai nomi unici per le opzioni sbagliate
             let sampledNames = new Set();
             while(sampledNames.size < numWrongToSample && sampledNames.size < possibleWrongBirds.length) {
                  let potentialWrong = possibleWrongBirds[Math.floor(Math.random() * possibleWrongBirds.length)];
@@ -196,22 +252,18 @@ document.addEventListener('DOMContentLoaded', () => {
             wrongOptions = Array.from(sampledNames);
         }
 
-        // 3. Combina e mescola le opzioni
         let options = [currentCorrectName, ...wrongOptions];
-        options = shuffleArray(options); // Mescola l'array
+        options = shuffleArray(options);
 
         console.log(`Mostrando card: Corretto='${currentCorrectName}', Opzioni=${options}`);
 
-        // 4. Aggiorna UI
         birdImage.alt = `Immagine di ${currentCorrectName}`;
-
-        // Gestione caricamento/errore immagine
-        birdImage.onload = null; birdImage.onerror = null; // Pulisci handlers
+        birdImage.onload = null; birdImage.onerror = null;
         birdImage.onload = () => {
             console.log("Immagine caricata (static):", correctBird.image_path);
             birdImage.style.display = 'block';
-            createOptionButtons(options); // Crea bottoni opzioni
-            setLoadingState(false); // Fine caricamento
+            createOptionButtons(options);
+            setLoadingState(false);
             birdImage.onerror = null;
         };
         birdImage.onerror = () => {
@@ -220,15 +272,13 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackPara.className = 'feedback-error';
             birdImage.style.display = 'none';
             setLoadingState(false);
-            nextButton.style.display = 'block'; nextButton.disabled = false; // Permetti di andare avanti
+            nextButton.style.display = 'block'; nextButton.disabled = false;
         };
-        // Imposta src con il percorso relativo dal JSON
         birdImage.src = correctBird.image_path;
+    }
 
-    } // --- Fine displayNewCard ---
 
-
-    /** 5. Crea i bottoni delle opzioni (invariata) */
+    /** 5. Crea i bottoni delle opzioni (QUIZ) (Unchanged) */
     function createOptionButtons(options) {
         optionsContainer.innerHTML = '';
         if (!options || options.length === 0) {
@@ -243,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /** 6. Gestisce il click su un bottone-opzione (invariata) */
+    /** 6. Gestisce il click su un bottone-opzione (QUIZ) (Unchanged) */
     function handleChoiceClick(event) {
         if (isLoading) return;
         const chosenButton = event.target;
@@ -251,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
         optionsContainer.querySelectorAll('button').forEach(button => button.disabled = true);
         const isCorrect = normalizeText(chosenAnswer) === normalizeText(currentCorrectName);
 
-        feedbackPara.textContent = ''; // No testo "Corretto/Sbagliato"
+        feedbackPara.textContent = '';
         if (isCorrect) {
             feedbackPara.className = 'feedback-correct';
             chosenButton.classList.add('correct');
@@ -270,12 +320,95 @@ document.addEventListener('DOMContentLoaded', () => {
         nextButton.focus();
     }
 
+    /** 7. NUOVA Funzione: Mostra gli uccelli per la vetrina selezionata nella GALLERIA */
+    function displayGalleryForVetrina(vetrinaName) {
+        console.log(`Visualizzazione galleria per: ${vetrinaName}`);
+        setLoadingState(true);
+        galleryContentContainer.innerHTML = ''; // Pulisci contenuto precedente
+
+        const birdsInVetrina = allBirdsData.filter(bird => bird.vetrina === vetrinaName);
+
+        if (birdsInVetrina.length === 0) {
+            galleryContentContainer.innerHTML = `<p>Nessun uccello trovato per ${vetrinaName}.</p>`;
+        } else {
+            birdsInVetrina.forEach(bird => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('gallery-item');
+
+                const img = document.createElement('img');
+                img.src = bird.image_path;
+                img.alt = bird.name;
+                // Add error handling for gallery images too
+                img.onerror = () => {
+                    console.error("Errore caricamento immagine galleria:", bird.image_path);
+                    itemDiv.innerHTML = `<p>${bird.name}</p><p class="feedback-error">(Immagine non caricata)</p>`; // Show name even if image fails
+                };
+
+                const namePara = document.createElement('p');
+                namePara.textContent = bird.name;
+
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(namePara);
+                galleryContentContainer.appendChild(itemDiv);
+            });
+        }
+        setLoadingState(false);
+        // Scroll gallery content into view if needed
+        galleryContentContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    /** 8. NUOVA Funzione: Gestisce il cambio modalità */
+    function handleModeSwitch() {
+        if (isLoading) return;
+
+        appMode = (appMode === 'quiz') ? 'gallery' : 'quiz';
+        console.log(`Cambiando modalità a: ${appMode}`);
+
+        updateUIVisibility();
+        resetUIState(); // Clear selections/content when switching modes
+    }
+
+    /** 9. NUOVA Funzione: Aggiorna visibilità UI in base alla modalità */
+    function updateUIVisibility() {
+         if (appMode === 'quiz') {
+            bodyElement.classList.remove('gallery-mode');
+            bodyElement.classList.add('quiz-mode');
+            modeSwitchButton.textContent = 'Vai alla Galleria';
+            // Flashcard visibility is controlled by handleStartExercise/validateVetrinaSelectionQuiz
+         } else { // gallery mode
+            bodyElement.classList.remove('quiz-mode');
+            bodyElement.classList.add('gallery-mode');
+            modeSwitchButton.textContent = 'Vai al Quiz';
+            flashcardContainer.style.display = 'none'; // Ensure flashcard is hidden
+         }
+         // Ensure loading indicator is off if not loading
+         setLoadingState(isLoading);
+    }
+
+     /** 10. NUOVA Funzione: Resetta stato UI quando si cambia modalità */
+     function resetUIState() {
+         // Reset quiz state
+         if (vetrinaGridQuiz) vetrinaGridQuiz.querySelectorAll('.vetrina-item.selected').forEach(item => item.classList.remove('selected'));
+         currentVetrinaSelectionQuiz = [];
+         flashcardContainer.style.display = 'none';
+         feedbackPara.textContent = '';
+         correctAnswerPara.style.display = 'none';
+         optionsContainer.innerHTML = '';
+         birdImage.src = '';
+         validateVetrinaSelectionQuiz(); // Update quiz button state
+
+         // Reset gallery state
+         if (vetrinaGridGallery) vetrinaGridGallery.querySelectorAll('.vetrina-item.active').forEach(item => item.classList.remove('active'));
+         galleryContentContainer.innerHTML = ''; // Clear gallery content
+     }
+
+
     // --- Event Listeners ---
     startExerciseButton.addEventListener('click', handleStartExercise);
-    // MODIFICA: Next ora chiama displayNewCard
     nextButton.addEventListener('click', displayNewCard);
+    modeSwitchButton.addEventListener('click', handleModeSwitch);
 
     // --- Inizializzazione ---
-    loadAppData(); // Carica i dati da data.json all'avvio
+    loadAppData(); // Carica i dati e renderizza le griglie
 
 }); // Fine DOMContentLoaded
