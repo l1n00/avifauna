@@ -30,24 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Funzioni Helper ---
 
-        /**
-     * Controlla se lo User Agent appartiene a un dispositivo iOS (iPhone, iPad, iPod).
-     * Include un controllo per le versioni più recenti di iPadOS che potrebbero mascherarsi da Mac.
-     * @returns {boolean} True se è probabile che sia iOS, altrimenti False.
-     */
-    function isIOS() {
-        return [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
-        'iPad',
-        'iPhone',
-        'iPod'
-        ].includes(navigator.platform)
-        // Aggiungi controllo per iPadOS 13+ che potrebbe identificarsi come 'MacIntel'
-        || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
-    }
-
     /** Mostra/Nasconde indicatore e disabilita/abilita controlli base */
     function setLoadingState(loading) {
         isLoading = loading;
@@ -380,57 +362,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /** 9. Aggiorna visibilità UI in base alla modalità */
     function updateUIVisibility() {
+        // Trova l'icona span dentro il bottone
         const iconSpan = modeSwitchButton ? modeSwitchButton.querySelector('span.material-symbols-outlined') : null;
 
-        // Seleziona i nuovi wrapper dentro il contenitore PDF
-        const pdfEmbedWrapper = document.getElementById('pdf-embed-wrapper');
-        const pdfIosMessage = document.getElementById('pdf-ios-message');
-
-        // Assicurati che gli elementi esistano
-        if (!quizSetupContainer || !pdfViewerContainer || !pdfEmbedWrapper || !pdfIosMessage) {
-            console.error("Elementi container/wrapper mancanti");
+        // Assicurati che gli elementi esistano prima di modificarli
+        if (!quizSetupContainer || !pdfViewerContainer) {
+            console.error("Elementi container mancanti (quizSetupContainer o pdfViewerContainer)");
             return;
         }
 
         if (appMode === 'quiz') {
             bodyElement.classList.remove('pdf-mode');
             bodyElement.classList.add('quiz-mode');
-            quizSetupContainer.style.display = 'block'; // O 'flex', 'grid', ecc.
-            pdfViewerContainer.style.display = 'none'; // Nascondi l'intero contenitore PDF
-            if (iconSpan) iconSpan.textContent = 'picture_as_pdf';
-            if (modeSwitchButton) modeSwitchButton.title = 'Visualizza PDF';
+
+            // Mostra il setup del quiz, nascondi il visualizzatore PDF
+            quizSetupContainer.style.display = 'block'; // O 'flex', 'grid', ecc. se necessario
+            pdfViewerContainer.style.display = 'none';
+
+            // Imposta icona per indicare "Vai al PDF"
+            if (iconSpan) iconSpan.textContent = 'picture_as_pdf'; // Icona PDF
+            if (modeSwitchButton) modeSwitchButton.title = 'Visualizza PDF'; // Aggiorna tooltip
+            // La visibilità della flashcard è gestita altrove
         } else { // pdf mode
             bodyElement.classList.remove('quiz-mode');
             bodyElement.classList.add('pdf-mode');
+
+            // Nascondi il setup del quiz, mostra il visualizzatore PDF
             quizSetupContainer.style.display = 'none';
-            pdfViewerContainer.style.display = 'block'; // Mostra il contenitore PDF generale
+            pdfViewerContainer.style.display = 'block'; // O 'flex', 'grid', ecc. se necessario
 
-            // --- Logica Condizionale iOS ---
-            if (isIOS()) {
-                // Su iOS: nascondi l'iframe, mostra il messaggio/link specifico
-                pdfEmbedWrapper.style.display = 'none';
-                pdfIosMessage.style.display = 'block';
-                console.log("Rilevato iOS: Mostro link diretto per PDF.");
-            } else {
-                // Su altri OS: mostra l'iframe, nascondi il messaggio iOS
-                pdfEmbedWrapper.style.display = 'block';
-                pdfIosMessage.style.display = 'none';
-                console.log("Non rilevato iOS: Mostro PDF incorporato.");
-                // Opzionale: potresti voler ricaricare l'iframe se necessario
-                // const iframe = document.getElementById('pdf-iframe');
-                // if (iframe) iframe.src = iframe.src;
-            }
-            // --- Fine Logica Condizionale ---
-
-            if (iconSpan) iconSpan.textContent = 'quiz';
-            if (modeSwitchButton) modeSwitchButton.title = 'Vai al Quiz';
-            if (flashcardContainer) flashcardContainer.style.display = 'none';
+            // Imposta icona per indicare "Vai al Quiz"
+            if (iconSpan) iconSpan.textContent = 'quiz'; // Icona Quiz
+            if (modeSwitchButton) modeSwitchButton.title = 'Vai al Quiz'; // Aggiorna tooltip
+            if (flashcardContainer) flashcardContainer.style.display = 'none'; // Assicurati che la flashcard sia nascosta
         }
 
+        // Assicurati che l'indicatore di caricamento sia spento se non sta caricando
         if (!isLoading) {
             setLoadingState(false);
         }
     }
+
      /** 10. Resetta stato UI quando si cambia modalità */
      function resetUIState() {
          // Reset quiz state

@@ -4,185 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avifauna Quiz & PDF</title>
-
     <link rel="stylesheet" href="static/css/style.css">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-
     <style>
-        /* Stili base per il corpo se necessario */
-        body {
-            font-family: sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4; /* Sfondo leggero */
-        }
-
-        /* Stili per l'header persistente */
         .app-header {
-            display: flex;
-            justify-content: space-between; /* Spinge titolo e pulsante ai lati */
-            align-items: center;            /* Allinea verticalmente */
-            padding: 10px 15px;             /* Spaziatura interna */
-            background-color: #ffffff;      /* Sfondo bianco */
-            border-bottom: 1px solid #ccc;  /* Bordo inferiore */
-            position: sticky; /* Rende l'header "appiccicoso" in alto (opzionale) */
-            top: 0;
-            z-index: 100; /* Assicura che stia sopra altri elementi durante lo scroll */
+            display: flex; /* Usa flexbox per allineare titolo e pulsante */
+            justify-content: space-between; /* Spinge titolo e pulsante ai lati opposti */
+            align-items: center; /* Allinea verticalmente al centro */
+            padding: 10px 15px; /* Aggiungi un po' di spaziatura */
+            border-bottom: 1px solid #eee; /* Linea separatrice opzionale */
+            margin-bottom: 15px; /* Spazio sotto l'header */
         }
         .app-header h1 {
-            margin: 0;
-            font-size: 1.4em; /* Dimensione titolo */
+            margin: 0; /* Rimuovi margini predefiniti dal titolo */
         }
         #mode-switch-button {
+             /* Assicurati che il pulsante abbia uno stile di base se necessario */
              background: none;
              border: none;
              cursor: pointer;
              padding: 5px;
-             color: #333; /* Colore icona */
-        }
-        #mode-switch-button:hover {
-            color: #000; /* Colore icona hover */
         }
         #mode-switch-button .material-symbols-outlined {
             font-size: 28px; /* Dimensione icona */
-            vertical-align: middle;
+            vertical-align: middle; /* Allinea icona */
         }
-
-        /* Stile per il link "Apri Documento" su iOS per farlo sembrare un pulsante */
-        .button-like-link {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #007bff; /* Blu primario */
-            color: white !important;   /* Testo bianco */
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            transition: background-color 0.2s ease;
-        }
-        .button-like-link:hover,
-        .button-like-link:focus {
-            background-color: #0056b3; /* Blu più scuro */
-            color: white !important;
-            text-decoration: none;
-        }
-
-        /* Contenitori principali */
-        .selection-container,
-        #flashcard,
-        #pdf-viewer-container {
-            padding: 15px; /* Padding per non attaccare ai bordi */
-            margin: 15px; /* Margine esterno */
-            background-color: #ffffff; /* Sfondo bianco per i box */
-            border-radius: 8px; /* Angoli arrotondati */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Ombra leggera */
-        }
-
-        /* Visibilità iniziale gestita da JS/classi; display: none per evitare flash */
-         #flashcard,
-         #pdf-viewer-container {
-             display: none;
-         }
-        /* In alternativa, potresti avere regole come:
-           body.quiz-mode #pdf-viewer-container { display: none; }
-           body.pdf-mode #quiz-setup-container { display: none; }
-           body.pdf-mode #flashcard { display: none; }
-           Ma il controllo diretto con JS è più robusto contro stili inline */
-
-        /* Stili feedback (assicurati siano definiti) */
-        .feedback-error { color: #dc3545; font-weight: bold; margin-top: 10px; }
-        .feedback-correct { color: #28a745; font-weight: bold; }
-        .feedback-incorrect { color: #ffc107; font-weight: bold; }
-        .feedback-warning { color: #ffc107; margin-top: 10px; }
-        #correct-answer { margin-top: 5px; font-weight: bold; }
-
-        /* Stili griglia vetrine (assicurati siano definiti) */
-         .vetrina-grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .vetrina-item {
-            border: 1px solid #ccc;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 4px;
-            background-color: #f9f9f9;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-            word-wrap: break-word; /* Evita che testo lungo rompa il layout */
-        }
-        .vetrina-item:hover {
-            background-color: #e9ecef;
-        }
-        .vetrina-item.selected {
-            background-color: #cfe2ff; /* Blu chiaro per selezione */
-            border-color: #b6d4fe;
-            font-weight: bold;
-        }
-        .options-container {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .choice-button {
-            padding: 10px;
-            cursor: pointer;
-            border: 1px solid #ccc;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-            width: 100%; /* Occupa tutta la larghezza disponibile */
-            text-align: left; /* Allinea testo a sinistra */
-        }
-        .choice-button:hover {
-            background-color: #e2e6ea;
-        }
-        .choice-button.correct {
-            background-color: #d4edda; /* Verde per corretto */
-            border-color: #c3e6cb;
-        }
-         .choice-button.incorrect {
-            background-color: #f8d7da; /* Rosso per incorretto */
-            border-color: #f5c6cb;
-        }
-         #bird-image {
-            max-width: 100%;
-            height: auto; /* Mantiene proporzioni */
-            max-height: 400px; /* Limita altezza massima */
-            display: block; /* Centra se necessario con margin auto */
-            margin: 0 auto 15px auto; /* Spazio sotto */
-            border: 1px solid #eee; /* Bordo leggero */
-        }
-         #start-exercise-button, #next-card {
-             padding: 10px 15px;
-             cursor: pointer;
-             background-color: #007bff;
-             color: white;
-             border: none;
-             border-radius: 4px;
-             margin-top: 15px;
-             font-size: 1em;
-         }
-         #start-exercise-button:disabled, #next-card:disabled {
-             background-color: #6c757d; /* Grigio per disabilitato */
-             cursor: not-allowed;
-         }
-         #next-card {
-             background-color: #28a745; /* Verde per "Prossima" */
-         }
-         #next-card:disabled {
-              background-color: #6c757d;
-         }
     </style>
 </head>
 <body class="quiz-mode"> <div class="app-header">
-        <h1>Avifauna Quiz</h1>
-        <button id="mode-switch-button" title="Visualizza PDF">
+        <h1>Avifauna Quiz</h1> <button id="mode-switch-button" title="Visualizza PDF">
             <span class="material-symbols-outlined">picture_as_pdf</span>
         </button>
     </div>
@@ -198,41 +48,31 @@
         <p id="selection-feedback" class="feedback-warning" style="display: none;">Seleziona almeno una vetrina.</p>
     </div>
 
-    <div id="flashcard">
+    <div id="flashcard" style="display: none;">
         <div id="loading" style="display: none;">Caricamento...</div>
         <div id="bird-image-container">
             <img id="bird-image" src="" alt="Immagine Uccello" style="display: none;">
         </div>
         <div id="multiple-choice-options" class="options-container">
             </div>
-        <div class="feedback-container" style="margin-top: 15px;"> <p id="feedback"></p>
-             <p id="correct-answer" style="display: none;"></p>
-             <button id="next-card" style="display: none;">Prossima</button>
+        <button id="next-card" style="display: none;">Prossima</button>
+        <div class="feedback-container">
+            <p id="feedback"></p>
+            <p id="correct-answer" style="display: none;"></p>
         </div>
     </div>
 
-    <div id="pdf-viewer-container">
+
+    <div id="pdf-viewer-container" style="display: none;">
         <h2>Documento Avifauna</h2>
-
-        <div id="pdf-embed-wrapper">
-            <iframe id="pdf-iframe" src="img/avifauna_museo_2022.pdf" width="100%" height="600px" style="border: none; display: block; /* Assicura che sia blocco */">
-                Il tuo browser non supporta gli iframe o c'è stato un errore.
-            </iframe>
-            <p style="margin-top:10px;">In alternativa, puoi <a href="img/avifauna_museo_2022.pdf" target="_blank">scaricare o aprire il PDF qui</a>.</p>
-        </div>
-
-        <div id="pdf-ios-message">
-             <p>Su iPhone/iPad, la visualizzazione diretta potrebbe non permettere di scorrere il documento.</p>
-             <p>Per una migliore esperienza, apri il documento in una nuova scheda:</p>
-             <p style="text-align: center; margin: 20px 0;">
-                 <a href="img/avifauna_museo_2022.pdf" target="_blank" class="button-like-link">
-                     Apri Documento Avifauna
-                 </a>
-             </p>
-        </div>
+        <object data="img/avifauna_museo_2022.pdf" type="application/pdf" width="100%" height="600px">
+            <p>Il tuo browser non supporta la visualizzazione di PDF incorporati o c'è stato un problema nel caricarlo.</p>
+            <p>Puoi <a href="img/avifauna_museo_2022.pdf" target="_blank"><strong>aprire il PDF qui</strong></a>.</p>
+        </object>
+        <p>Se non vedi il PDF, puoi <a href="/img/avifauna_museo_2022.pdf" target="_blank">scaricarlo qui</a>.</p>
     </div>
+
 
     <script src="static/js/script.js"></script>
-
 </body>
 </html>
