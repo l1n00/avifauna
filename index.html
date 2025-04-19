@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avifauna Quiz & Galleria</title> <!-- Updated Title -->
     <link rel="stylesheet" href="static/css/style.css">
+    <!-- Add Google Material Symbols font link -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <!-- Add a class to body to manage mode visibility -->
 <body class="quiz-mode">
 
-    <!-- Mode Switch Button -->
+    <!-- REMOVE the old mode switcher container -->
+    <!--
     <div class="mode-switcher-container">
         <button id="mode-switch-button">Vai alla Galleria</button>
     </div>
+    -->
 
     <!-- Container for Quiz Setup (Vetrina Selection) -->
     <div id="quiz-setup-container" class="selection-container"> <!-- Renamed ID for clarity -->
-        <h2>Seleziona le Vetrine per il Quiz</h2>
+        <!-- Add a wrapper for the heading and the button -->
+        <div class="quiz-setup-header">
+             <h2>Seleziona le Vetrine per il Quiz</h2>
+             <!-- Move the button here and use an icon -->
+             <button id="mode-switch-button" title="Cambia modalità"> <!-- Add title for accessibility -->
+                 <span class="material-symbols-outlined">photo_library</span> <!-- Icon -->
+             </button>
+        </div>
         <div id="vetrina-grid-quiz" class="vetrina-grid-container"> <!-- Specific ID for quiz grid -->
             <p>Caricamento vetrine...</p>
         </div>

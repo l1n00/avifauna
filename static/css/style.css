@@ -280,26 +280,61 @@ h1 {
 
 
 /* Mode Switcher */
-.mode-switcher-container {
-    text-align: right;
-    padding: 10px 20px;
-    background-color: #f0f0f0; /* Optional background */
-    border-bottom: 1px solid #ccc; /* Optional separator */
+/* REMOVE Mode Switcher Container styles */
+/*
+.mode-switcher-container { ... }
+#mode-switch-button { ... }
+#mode-switch-button:hover { ... }
+*/
+
+/* NEW Styles for Quiz Setup Header */
+.quiz-setup-header {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center;    /* Align items vertically */
+    gap: 15px;              /* Space between heading and button */
+    width: 100%;            /* Take full width */
+    margin-bottom: 15px;    /* Space below header */
+    position: relative;     /* Needed if you want absolute positioning inside */
 }
 
+/* Adjust heading margin if needed */
+#quiz-setup-container h2 {
+    margin: 0; /* Remove default margins if they interfere */
+    color: #333;
+    /* font-size: 1.5rem; /* Adjust as needed */
+}
+
+/* NEW Styles for the Icon Button */
 #mode-switch-button {
-    padding: 8px 15px;
-    font-size: 0.9rem;
+    background: none;       /* Remove background */
+    border: none;           /* Remove border */
+    padding: 5px;           /* Adjust padding around icon */
     cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+    color: #007bff;         /* Icon color */
+    font-size: 28px;        /* Icon size - adjust as needed */
+    line-height: 1;         /* Ensure icon aligns well */
+    display: inline-flex;   /* Align icon nicely */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;     /* Make it circular */
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #mode-switch-button:hover {
-    background-color: #0056b3;
+    background-color: rgba(0, 123, 255, 0.1); /* Subtle background on hover */
+}
+
+#mode-switch-button:disabled {
+    color: #ccc;
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+/* Style for the icon itself (using the class from Google Fonts) */
+#mode-switch-button .material-symbols-outlined {
+    font-size: inherit; /* Inherit size from button */
+    display: block;     /* Prevents extra space */
 }
 
 
