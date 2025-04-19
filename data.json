@@ -327,6 +327,51 @@
       "vetrina": "VETRINA 3a"
     },
     {
+      "name": "CHIURLO MAGGIORE",
+      "image_path": "img/VETRINA 3b/CHIURLO MAGGIORE.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "GABBIANO COMUNE",
+      "image_path": "img/VETRINA 3b/GABBIANO COMUNE.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "GABBIANO REALE",
+      "image_path": "img/VETRINA 3b/GABBIANO REALE.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "SMERGO MAGGIORE",
+      "image_path": "img/VETRINA 3b/SMERGO MAGGIORE M.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "STROLAGA MINORE",
+      "image_path": "img/VETRINA 3b/STROLAGA MINORE.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "SVASSO MINORE",
+      "image_path": "img/VETRINA 3b/SVASSO  MINORE.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "SVASSO MAGGIORE",
+      "image_path": "img/VETRINA 3b/SVASSO MAGGIORE.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "SVASSO MINORE",
+      "image_path": "img/VETRINA 3b/SVASSO MINORE.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
+      "name": "TUFFETTO",
+      "image_path": "img/VETRINA 3b/TUFFETTO.png",
+      "vetrina": "VETRINA 3b"
+    },
+    {
       "name": "AVERLA CAPIROSSO",
       "image_path": "img/VETRINA 4a/AVERLA CAPIROSSO.png",
       "vetrina": "VETRINA 4a"
