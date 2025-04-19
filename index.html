@@ -3,28 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avifauna Quiz & Galleria</title> <!-- Updated Title -->
+    <title>Flashcard Uccelli</title>
     <link rel="stylesheet" href="static/css/style.css">
 </head>
-<!-- Add a class to body to manage mode visibility -->
-<body class="quiz-mode">
-
-    <!-- Mode Switch Button -->
-    <div class="mode-switcher-container">
-        <button id="mode-switch-button">Vai alla Galleria</button>
-    </div>
-
-    <!-- Container for Quiz Setup (Vetrina Selection) -->
-    <div id="quiz-setup-container" class="selection-container"> <!-- Renamed ID for clarity -->
-        <h2>Seleziona le Vetrine per il Quiz</h2>
-        <div id="vetrina-grid-quiz" class="vetrina-grid-container"> <!-- Specific ID for quiz grid -->
+<body>
+    <div id="vetrina-selection-container" class="selection-container">
+        <h2>Seleziona le Vetrine</h2>
+        <div id="vetrina-grid" class="vetrina-grid-container">
             <p>Caricamento vetrine...</p>
         </div>
         <button id="start-exercise-button" disabled>Avvia / Aggiorna Esercizio</button>
         <p id="selection-feedback" class="feedback-warning" style="display: none;">Seleziona almeno una vetrina.</p>
     </div>
 
-    <!-- Container for Quiz Execution -->
     <div id="flashcard" style="display: none;">
         <div id="loading" style="display: none;">Caricamento...</div>
         <div id="bird-image-container">
@@ -38,20 +29,8 @@
         <div class="feedback-container">
              <p id="feedback" aria-live="polite"></p> <p id="correct-answer" style="display: none;"></p>
         </div>
-    </div>
 
-    <!-- NEW Container for Gallery View -->
-    <div id="gallery-view" style="display: none;">
-        <h2>Galleria Avifauna</h2>
-        <p>Seleziona una vetrina per visualizzare gli uccelli:</p>
-        <!-- Vetrine will be listed here, or reuse a grid -->
-        <div id="vetrina-grid-gallery" class="vetrina-grid-container"> <!-- Specific ID for gallery grid -->
-             <!-- Vetrine loaded by JS -->
         </div>
-        <div id="gallery-content" class="gallery-content-container">
-            <!-- Bird images and names for the selected vetrina will be loaded here -->
-        </div>
-    </div>
 
     <script src="static/js/script.js"></script>
 </body>
