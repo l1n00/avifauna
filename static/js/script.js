@@ -384,61 +384,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /** 9. NUOVA Funzione: Aggiorna visibilità UI in base alla modalità */
     function updateUIVisibility() {
-         // Find the icon span inside the button
-         const iconSpan = modeSwitchButton ? modeSwitchButton.querySelector('span.material-symbols-outlined') : null;
-
          if (appMode === 'quiz') {
             bodyElement.classList.remove('gallery-mode');
             bodyElement.classList.add('quiz-mode');
-            // Set icon to show "Go to Gallery" action
-            if (iconSpan) iconSpan.textContent = 'photo_library';
-            if (modeSwitchButton) modeSwitchButton.title = 'Vai alla Galleria'; // Update tooltip
+            modeSwitchButton.textContent = 'Vai alla Galleria';
             // Flashcard visibility is controlled by handleStartExercise/validateVetrinaSelectionQuiz
          } else { // gallery mode
             bodyElement.classList.remove('quiz-mode');
             bodyElement.classList.add('gallery-mode');
-            // Set icon to show "Go to Quiz" action
-            if (iconSpan) iconSpan.textContent = 'quiz'; // Use 'quiz' icon
-            if (modeSwitchButton) modeSwitchButton.title = 'Vai al Quiz'; // Update tooltip
+            modeSwitchButton.textContent = 'Vai al Quiz';
             flashcardContainer.style.display = 'none'; // Ensure flashcard is hidden
          }
          // Ensure loading indicator is off if not loading
-         // Check isLoading state before calling setLoadingState to avoid potential loops if called from within it
-         if (!isLoading) {
-            setLoadingState(false); // Ensure controls are enabled/disabled correctly based on current state
-         }
+         setLoadingState(isLoading);
     }
 
      /** 10. NUOVA Funzione: Resetta stato UI quando si cambia modalità */
      function resetUIState() {
          // Reset quiz state
-         // Add null check for vetrinaGridQuiz
          if (vetrinaGridQuiz) vetrinaGridQuiz.querySelectorAll('.vetrina-item.selected').forEach(item => item.classList.remove('selected'));
          currentVetrinaSelectionQuiz = [];
-         // Add null check for flashcardContainer
-         if (flashcardContainer) flashcardContainer.style.display = 'none';
-         // Add null checks for feedback elements
-         if (feedbackPara) feedbackPara.textContent = '';
-         if (correctAnswerPara) correctAnswerPara.style.display = 'none';
-         // Add null check for optionsContainer
-         if (optionsContainer) optionsContainer.innerHTML = '';
-         // Add null check for birdImage
-         if (birdImage) birdImage.src = '';
+         flashcardContainer.style.display = 'none';
+         feedbackPara.textContent = '';
+         correctAnswerPara.style.display = 'none';
+         optionsContainer.innerHTML = '';
+         birdImage.src = '';
          validateVetrinaSelectionQuiz(); // Update quiz button state
 
          // Reset gallery state
-         // Add null check for vetrinaGridGallery
          if (vetrinaGridGallery) vetrinaGridGallery.querySelectorAll('.vetrina-item.active').forEach(item => item.classList.remove('active'));
-         // Add null check for galleryContentContainer
-         if (galleryContentContainer) galleryContentContainer.innerHTML = ''; // Clear gallery content
+         galleryContentContainer.innerHTML = ''; // Clear gallery content
      }
 
 
     // --- Event Listeners ---
-    // Add null checks before adding listeners
-    if (startExerciseButton) startExerciseButton.addEventListener('click', handleStartExercise);
-    if (nextButton) nextButton.addEventListener('click', displayNewCard);
-    if (modeSwitchButton) modeSwitchButton.addEventListener('click', handleModeSwitch);
+    startExerciseButton.addEventListener('click', handleStartExercise);
+    nextButton.addEventListener('click', displayNewCard);
+    modeSwitchButton.addEventListener('click', handleModeSwitch);
 
     // --- Inizializzazione ---
     loadAppData(); // Carica i dati e renderizza le griglie
